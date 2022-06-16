@@ -60,6 +60,9 @@
       "relation": "manyToMany",
       "target": "api::product-category.product-category",
       "inversedBy": "products"
+    },
+    "ProductInformation": {
+      "type": "text"
     }
   }
 }
