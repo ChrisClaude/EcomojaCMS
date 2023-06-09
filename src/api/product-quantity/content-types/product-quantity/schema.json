@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "carts",
+  "collectionName": "product_quantities",
   "info": {
-    "singularName": "cart",
-    "pluralName": "carts",
-    "displayName": "Cart",
+    "singularName": "product-quantity",
+    "pluralName": "product-quantities",
+    "displayName": "ProductQuantity",
     "description": ""
   },
   "options": {
@@ -22,10 +22,8 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "product_quantities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product-quantity.product-quantity"
+    "quantity": {
+      "type": "biginteger"
     }
   }
 }
