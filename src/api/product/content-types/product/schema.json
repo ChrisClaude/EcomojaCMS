@@ -63,6 +63,12 @@
     },
     "ProductInformation": {
       "type": "text"
+    },
+    "product_quantity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-quantity.product-quantity",
+      "mappedBy": "product"
     }
   }
 }

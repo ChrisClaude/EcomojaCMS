@@ -12,9 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "product": {
+    "products": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::product.product"
     },
     "users_permissions_user": {

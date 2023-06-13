@@ -15,15 +15,14 @@
     "product": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::product.product"
-    },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "api::product.product",
+      "inversedBy": "product_quantity"
     },
     "quantity": {
       "type": "biginteger"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
