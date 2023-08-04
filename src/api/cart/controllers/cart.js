@@ -36,7 +36,6 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
       }
     }
     catch(err){
-      console.log(err);
       ctx.body = err
     }
   }
