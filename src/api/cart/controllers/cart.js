@@ -6,7 +6,7 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
-  async findOne(ctx){
+  async findByUserId(ctx){
     try{
       const userId = ctx.params.id;
       console.log(userId);
