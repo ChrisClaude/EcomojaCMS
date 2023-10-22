@@ -69,6 +69,7 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
                   quantity: item.productInstances,
                 },
               });
+              return entry;
             }
           });
         }
@@ -78,4 +79,6 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
     catch(error){
       console.log(error);
     }
+
+    return Response.error()
 },}));
