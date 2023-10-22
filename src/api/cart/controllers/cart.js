@@ -60,6 +60,9 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
                   quantity: qty,
                 },
               });
+              if(entry){
+                console.log(`Entry updated ${entry}`);
+              }
             }
             else{
               const entry = await strapi.db.query('api::cart.cart').create({
