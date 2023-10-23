@@ -53,7 +53,7 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
           cart.forEach(async (item) => {
             const cartItem = entries.find((cart)=> cart.product.id === item.product.id);
             if(cartItem){
-              const qty = parseInt(item.productInstances) + parseInt(cartItem.quantity);
+              const qty = parseInt(item.quantity) + parseInt(cartItem.quantity);
               const entry = await strapi.db.query('api::cart.cart').update({
                 where: { users_permissions_user: userId, product: cartItem.product.id },
                 data: {
@@ -69,7 +69,7 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
                 data: {
                   users_permissions_user: userId,
                   product: item.product.id,
-                  quantity: item.productInstances,
+                  quantity: item.quantity,
                 },
               });
               return entry;
