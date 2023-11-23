@@ -53,7 +53,7 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
           cart.forEach(async (item) => {
             const cartItem = entries.find((cart)=> cart.product.id === item.product.id);
             if(cartItem){
-              const qty = parseInt(item.productInstances) + parseInt(cartItem.quantity);
+              const qty = parseInt(item.quantity) + parseInt(cartItem.quantity);
               const entry = await strapi.db.query('api::cart.cart').update({
                 where: { users_permissions_user: userId, product: cartItem.product.id },
                 data: {
@@ -65,11 +65,12 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
               }
             }
             else{
+              const qty = parseInt(item.quantity);
               const entry = await strapi.db.query('api::cart.cart').create({
                 data: {
                   users_permissions_user: userId,
                   product: item.product.id,
-                  quantity: item.productInstances,
+                  quantity: qty,
                 },
               });
               return entry;
@@ -84,4 +85,24 @@ module.exports = createCoreController('api::cart.cart', ({ strapi }) =>  ({
     }
 
     return Response.error()
-},}));
+},
+async updateCartQuantity(ctx){
+  try{
+    const cart = ctx.request.body;
+    const id = cart.id;
+    const entry = await strapi.db.query('api::cart.cart').update({
+      where: { id: id },
+      data: {
+        quantity: cart.quantity,
+      },
+    });
+
+    if(entry){
+      return entry;
+    }
+  }
+  catch(error){
+    console.error(error);
+  }
+},
+}));
